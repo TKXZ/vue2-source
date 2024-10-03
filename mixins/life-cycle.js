@@ -16,6 +16,16 @@ export function lifeCycleMixin(Vue) {
   Vue.prototype._update = function (vNode) {
     const vm = this
     // 将VDOM 渲染为真实DOM
-    vm.$el = patch(vm.$el, vNode)
+    // 保存上次的 vnode 用于后续对比
+    const preVNode = vm._vNode
+    vm._vNode = vNode
+
+    if (!preVNode) {
+      // 第一次
+      vm.$el = patch(vm.$el, vNode)
+    } else {
+      // 后续更新
+      vm.$el = patch(preVNode, vNode)
+    }
   }
 }

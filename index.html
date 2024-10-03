@@ -12,9 +12,12 @@
     <script type="module">
       import app from './test.js'
 
-      setTimeout(() => {
-        app.count.value = 2
-      }, 2000)
+      app.count.value = 2
+      app.count.value = 3
+      app.$nextTick(() => {
+        const sp = document.getElementsByClassName('sp')[0]
+        console.log(sp.innerHTML)
+      })
     </script>
   </body>
 </html>

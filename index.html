@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app" class="class1 class2">
+      <span class="sp" style="background-color: red; color: aqua">{{ count.value }}</span>
+    </div>
+    <script type="module">
+      import app from './test.js'
+
+      setTimeout(() => {
+        app.count.value = 2
+      }, 2000)
+    </script>
+  </body>
+</html>
